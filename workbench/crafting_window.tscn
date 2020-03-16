@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/materials/block3.png" type="Texture" id=2]
-[ext_resource path="res://crafting_window/crafting_window.gd" type="Script" id=3]
-[ext_resource path="res://assets/materials/block2.png" type="Texture" id=5]
+[ext_resource path="res://crafting_hud/crafting_window.gd" type="Script" id=3]
 [ext_resource path="res://assets/grid/grid.png" type="Texture" id=6]
-[ext_resource path="res://materials/material.tscn" type="PackedScene" id=7]
 [ext_resource path="res://workbench/work_grid.gd" type="Script" id=8]
 
 [node name="crafting_window" type="Control"]
@@ -27,26 +24,4 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="material_holder" type="Node2D" parent="."]
-
-[node name="material" parent="material_holder" instance=ExtResource( 7 )]
-margin_left = 212.966
-margin_top = 91.8986
-margin_right = 228.966
-margin_bottom = 107.899
-
-[node name="material2" parent="material_holder" instance=ExtResource( 7 )]
-margin_left = 282.725
-margin_top = 62.8846
-margin_right = 298.725
-margin_bottom = 78.8846
-texture = ExtResource( 5 )
-
-[node name="material3" parent="material_holder" instance=ExtResource( 7 )]
-margin_left = 268.337
-margin_top = 133.985
-margin_right = 284.337
-margin_bottom = 149.985
-texture = ExtResource( 2 )
 [connection signal="grid_updated" from="work_grid" to="." method="_on_work_grid_grid_updated"]

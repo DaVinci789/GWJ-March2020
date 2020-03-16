@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/player.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/materials/block3.png" type="Texture" id=5]
 [ext_resource path="res://assets/materials/block1.png" type="Texture" id=6]
 [ext_resource path="res://assets/materials/block2.png" type="Texture" id=7]
+[ext_resource path="res://crafting_hud/material_display.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.08048, 13.4562 )
@@ -33,6 +34,7 @@ __meta__ = {
 }
 
 [node name="crafting_table" parent="crafting_hud/crafting_area" instance=ExtResource( 3 )]
+container_path = NodePath("../material_supply/material_container")
 
 [node name="craft_button" type="Button" parent="crafting_hud/crafting_area"]
 anchor_left = 0.5
@@ -80,17 +82,26 @@ __meta__ = {
 margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 6 )
+script = ExtResource( 8 )
+crafting_table = NodePath("../../../crafting_table")
 
 [node name="material_display2" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container"]
 margin_left = 35.0
 margin_right = 51.0
 margin_bottom = 16.0
 texture = ExtResource( 7 )
+script = ExtResource( 8 )
+crafting_table = NodePath("../../../crafting_table")
 
 [node name="material_display3" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container"]
 margin_left = 70.0
 margin_right = 86.0
 margin_bottom = 16.0
 texture = ExtResource( 5 )
+script = ExtResource( 8 )
+crafting_table = NodePath("../../../crafting_table")
 [connection signal="item_crafted" from="crafting_hud/crafting_area/crafting_table" to="crafting_hud" method="_on_crafting_table_item_crafted"]
 [connection signal="pressed" from="crafting_hud/crafting_area/craft_button" to="crafting_hud" method="_on_craft_button_pressed"]
+[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display" to="crafting_hud/crafting_area/material_supply/material_container/material_display" method="_on_material_display_gui_input"]
+[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display2" to="crafting_hud/crafting_area/material_supply/material_container/material_display2" method="_on_material_display_gui_input"]
+[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display3" to="crafting_hud/crafting_area/material_supply/material_container/material_display3" method="_on_material_display_gui_input"]

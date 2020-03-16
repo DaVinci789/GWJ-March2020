@@ -10,3 +10,4 @@ func _on_craft_button_pressed():
 func _on_crafting_table_item_crafted(item_name: String):
 	item_crafted = item_name
 	pass # Replace with function body.
+
