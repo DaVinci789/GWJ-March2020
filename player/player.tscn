@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/player.png" type="Texture" id=2]
+[ext_resource path="res://workbench/crafting_window.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/crafting_hud.gd" type="Script" id=4]
+[ext_resource path="res://assets/materials/block3.png" type="Texture" id=5]
+[ext_resource path="res://assets/materials/block1.png" type="Texture" id=6]
+[ext_resource path="res://assets/materials/block2.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.08048, 13.4562 )
@@ -16,3 +21,76 @@ vframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2.61202 )
 shape = SubResource( 1 )
+
+[node name="crafting_hud" type="CanvasLayer" parent="."]
+script = ExtResource( 4 )
+
+[node name="crafting_area" type="Control" parent="crafting_hud"]
+margin_right = 384.0
+margin_bottom = 217.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crafting_table" parent="crafting_hud/crafting_area" instance=ExtResource( 3 )]
+
+[node name="craft_button" type="Button" parent="crafting_hud/crafting_area"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -28.5
+margin_top = -39.0313
+margin_right = 28.5
+margin_bottom = -19.0313
+text = "Craft!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="crafting_hud/crafting_area"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -146.215
+margin_top = 28.7687
+margin_right = -106.215
+margin_bottom = 42.7687
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="material_supply" type="Control" parent="crafting_hud/crafting_area"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="material_container" type="HBoxContainer" parent="crafting_hud/crafting_area/material_supply"]
+margin_left = 280.961
+margin_top = 39.6537
+margin_right = 366.961
+margin_bottom = 55.6537
+custom_constants/separation = 19
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="material_display" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 6 )
+
+[node name="material_display2" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container"]
+margin_left = 35.0
+margin_right = 51.0
+margin_bottom = 16.0
+texture = ExtResource( 7 )
+
+[node name="material_display3" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container"]
+margin_left = 70.0
+margin_right = 86.0
+margin_bottom = 16.0
+texture = ExtResource( 5 )
+[connection signal="item_crafted" from="crafting_hud/crafting_area/crafting_table" to="crafting_hud" method="_on_crafting_table_item_crafted"]
+[connection signal="pressed" from="crafting_hud/crafting_area/craft_button" to="crafting_hud" method="_on_craft_button_pressed"]
