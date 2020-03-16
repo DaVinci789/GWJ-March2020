@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/materials/block1.png" type="Texture" id=1]
+[ext_resource path="res://materials/material.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.0047, 8.04591 )
+
+[node name="material" type="TextureRect"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+[connection signal="gui_input" from="." to="." method="_on_material_gui_input"]
