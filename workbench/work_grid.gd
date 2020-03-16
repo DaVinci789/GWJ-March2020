@@ -4,8 +4,8 @@ signal grid_updated(grid)
 
 const material_names_raw = {
 	"material": "A",
-	"material2": "B",
-	"material3": "C",
+	"material1": "B",
+	"material2": "C",
 }
 
 var items = []
@@ -61,7 +61,8 @@ func insert_item(item) -> bool:
 	var item_size = get_grid_size(item)
 	
 	if is_grid_space_avaliable(grid_position.x, grid_position.y, item_size.x, item_size.y):
-		set_grid_space(grid_position.x, grid_position.y, item_size.x, item_size.y, material_names_raw[item.name])
+		# item.get_groups[0] returns the material type of item.
+		set_grid_space(grid_position.x, grid_position.y, item_size.x, item_size.y, material_names_raw[item.get_groups()[0]])
 		item.rect_global_position = rect_global_position + Vector2(grid_position.x, grid_position.y) * cell_size
 		items.append(item)
 		emit_signal("grid_updated", grid)

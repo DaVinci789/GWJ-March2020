@@ -16,5 +16,13 @@ func _on_material_display_gui_input(event):
 			material_instance.connect("selected", crafting_table_node, "remove_material_from_grid")
 			material_instance.connect("dropped", crafting_table_node, "snap_material_to_grid")
 			
+			# set material_instance's material type
+			material_instance.add_to_group(self.get_groups()[0])
+			
+			material_instance.rect_global_position = get_global_mouse_position() -  Vector2(16,16)
+			print(material_instance.get_groups())
+			
 			emit_signal("material_spawned", material_instance)
-			add_child(material_instance)
+			$"../..".add_child(material_instance)
+			material_instance.emit_signal("selected", material_instance)
+			print(material_instance.rect_position)

@@ -13,12 +13,14 @@ __meta__ = {
 }
 
 [node name="work_grid" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 144.0
-margin_top = 98.0
-margin_right = -144.0
-margin_bottom = -22.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -6.84184
+margin_right = 48.0
+margin_bottom = 89.1582
 texture = ExtResource( 6 )
 script = ExtResource( 8 )
 __meta__ = {

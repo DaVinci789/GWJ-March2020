@@ -4,6 +4,7 @@ signal item_crafted(item_name)
 
 export (NodePath) var container_path
 
+onready var work_grid = $work_grid
 onready var container = get_node(container_path)
 var grid := {}
 
@@ -12,7 +13,7 @@ const recipes = {
 	"AB--C": "Thing 2"
 }
 
-onready var work_grid = $work_grid
+
 
 func move_window_to_top(node):
 	container.move_child(node, container.get_child_count() - 1)
