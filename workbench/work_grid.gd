@@ -59,7 +59,8 @@ func insert_item(item) -> bool:
 	var item_position = item.rect_global_position + Vector2(cell_size / 2,  cell_size / 2)
 	var grid_position = position_to_grid_coord(item_position)
 	var item_size = get_grid_size(item)
-	
+	# I have no idea why the item is sometimes added to the idle_process group.
+	item.remove_from_group("idle_process")
 	if is_grid_space_avaliable(grid_position.x, grid_position.y, item_size.x, item_size.y):
 		# item.get_groups[0] returns the material type of item.
 		set_grid_space(grid_position.x, grid_position.y, item_size.x, item_size.y, material_names_raw[item.get_groups()[0]])
