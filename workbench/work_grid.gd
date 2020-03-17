@@ -28,7 +28,7 @@ func _ready():
 func get_grid_size(selected_material) -> Dictionary:
 	var results := {} # Dict instead of Vector2 since a Vector2 can cast to float unexpectedly
 	var material_size: Vector2 = selected_material.rect_size
-	results.x = clamp(int(material_size.x / cell_size), 1, 500) # 500 arbitrarily large
+	results.x = clamp(int(material_size.x / cell_size), 1, 500) # 500 is just arbitrarily large
 	results.y = clamp(int(material_size.y / cell_size), 1, 500)
 	return results
 
@@ -60,11 +60,14 @@ func insert_item(item) -> bool:
 	var grid_position = position_to_grid_coord(item_position)
 	var item_size = get_grid_size(item)
 	# I have no idea why the item is sometimes added to the idle_process group.
-	item.remove_from_group("idle_process")
+	if item.is_in_group("idle_process"):
+		item.remove_from_group("idle_process")
 	if is_grid_space_avaliable(grid_position.x, grid_position.y, item_size.x, item_size.y):
 		# item.get_groups[0] returns the material type of item.
 		set_grid_space(grid_position.x, grid_position.y, item_size.x, item_size.y, material_names_raw[item.get_groups()[0]])
 		item.rect_global_position = rect_global_position + Vector2(grid_position.x, grid_position.y) * cell_size
+		# items aren't perfectly snapping to the grid
+		item.rect_global_position.y -= 1
 		items.append(item)
 		emit_signal("grid_updated", grid)
 		return true

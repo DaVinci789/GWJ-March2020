@@ -14,8 +14,6 @@ const recipes = {
 	"A--B-": "Thing 3",
 }
 
-
-
 func move_window_to_top(node):
 	container.move_child(node, container.get_child_count() - 1)
 	pass
@@ -46,6 +44,16 @@ func grid_to_string(grid: Dictionary) -> String:
 				grid_value = str(grid[column][row])
 			grid_as_string += grid_value # append to string
 	return grid_as_string
+	pass
+
+# FIXME: delegate to $work_grid
+func clear_grid():
+	print(grid)
+	for column in range(0,3):
+		for row in range(0,3):
+			# "1, 1" because we're assuiming we're focusing on the grid
+			$work_grid.set_grid_space(row, column, 1, 1, false)
+	print(grid)
 	pass
 
 func _on_work_grid_grid_updated(_grid):
