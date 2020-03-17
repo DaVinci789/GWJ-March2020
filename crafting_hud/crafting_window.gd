@@ -10,7 +10,8 @@ var grid := {}
 
 const recipes = {
 	"ABC": "Thing 1",
-	"AB--C": "Thing 2"
+	"AB--C": "Thing 2",
+	"A--B-": "Thing 3",
 }
 
 
