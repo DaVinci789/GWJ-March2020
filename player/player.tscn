@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/player.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/materials/block2.png" type="Texture" id=7]
 [ext_resource path="res://crafting_hud/material_display.gd" type="Script" id=8]
 [ext_resource path="res://crafting_hud/disposal.gd" type="Script" id=9]
+[ext_resource path="res://crafting_hud/crafted_material_display.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.08048, 13.4562 )
@@ -28,7 +29,6 @@ shape = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="crafting_area" type="Control" parent="crafting_hud"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -38,10 +38,10 @@ __meta__ = {
 [node name="crafting_table" parent="crafting_hud/crafting_area" instance=ExtResource( 3 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 131.023
-margin_top = -25.5151
-margin_right = 131.023
-margin_bottom = -25.5151
+margin_left = -127.181
+margin_top = -26.4389
+margin_right = -127.181
+margin_bottom = -26.4389
 container_path = NodePath("../material_supply")
 
 [node name="craft_button" type="Button" parent="crafting_hud/crafting_area"]
@@ -49,24 +49,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 101.144
-margin_top = 76.8209
-margin_right = 158.144
-margin_bottom = 96.8209
+margin_left = -157.522
+margin_top = 69.8268
+margin_right = -100.522
+margin_bottom = 89.8268
 text = "Craft!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="crafting_hud/crafting_area"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -146.215
-margin_top = 28.7687
-margin_right = -106.215
-margin_bottom = 42.7687
+[node name="crafted_material_display" type="Panel" parent="crafting_hud/crafting_area"]
+anchor_left = 0.342
+anchor_top = 0.331
+anchor_right = 0.659
+anchor_bottom = 0.792
+margin_left = 0.671997
+margin_top = 2.50399
+margin_right = -0.056015
+margin_bottom = -0.0720062
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="crafting_hud/crafting_area/crafted_material_display"]
+anchor_left = 0.335
+anchor_top = 0.813
+anchor_right = 0.665
+anchor_bottom = 0.957
+margin_left = -0.0349998
+margin_top = -0.0181503
+margin_right = 0.034996
+margin_bottom = 0.0138474
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,10 +92,10 @@ anchor_left = 0.337
 anchor_top = 0.761
 anchor_right = 0.663
 anchor_bottom = 0.946
-margin_left = 0.0919952
-margin_top = 0.0085907
-margin_right = -0.0920105
-margin_bottom = 0.048584
+margin_left = 0.591995
+margin_top = 13.624
+margin_right = 0.40799
+margin_bottom = 0.663986
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -100,10 +114,10 @@ __meta__ = {
 }
 
 [node name="material_container" type="HBoxContainer" parent="crafting_hud/crafting_area/material_supply"]
-margin_left = 280.961
-margin_top = 39.6537
-margin_right = 366.961
-margin_bottom = 55.6537
+margin_left = 22.7564
+margin_top = 38.7299
+margin_right = 108.756
+margin_bottom = 54.7299
 custom_constants/separation = 19
 __meta__ = {
 "_edit_use_anchors_": false
