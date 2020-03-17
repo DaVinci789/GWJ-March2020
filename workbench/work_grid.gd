@@ -95,7 +95,10 @@ func grab_item(grab_position):
 	return item
 
 func clear_grid():
-	for column in range(0,3):
-		for row in range(0,3):
+	for column in range(0,grid_width):
+		for row in range(0,grid_height):
 			# "1, 1" because we're assuiming we're focusing on the grid already
 			set_grid_space(row, column, 1, 1, false)
+	for item in items:
+		item.queue_free()
+	items = []
