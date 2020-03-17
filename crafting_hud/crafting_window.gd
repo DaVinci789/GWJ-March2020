@@ -46,14 +46,8 @@ func grid_to_string(grid: Dictionary) -> String:
 	return grid_as_string
 	pass
 
-# FIXME: delegate to $work_grid
 func clear_grid():
-	print(grid)
-	for column in range(0,3):
-		for row in range(0,3):
-			# "1, 1" because we're assuiming we're focusing on the grid
-			$work_grid.set_grid_space(row, column, 1, 1, false)
-	print(grid)
+	$work_grid.clear_grid()
 	pass
 
 func _on_work_grid_grid_updated(_grid):

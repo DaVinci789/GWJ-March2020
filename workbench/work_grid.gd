@@ -93,3 +93,9 @@ func grab_item(grab_position):
 	items.remove(items.find(item))
 	emit_signal("grid_updated", grid)
 	return item
+
+func clear_grid():
+	for column in range(0,3):
+		for row in range(0,3):
+			# "1, 1" because we're assuiming we're focusing on the grid already
+			set_grid_space(row, column, 1, 1, false)
