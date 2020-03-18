@@ -1,8 +1,12 @@
 extends KinematicBody2D
 
+onready var interaction_cast_length = $interaction_cast.cast_to.y
+
 var speed = 200  # speed in pixels/sec
 var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
+
+var interacting := false
 
 func _ready():
 	Game.player = self
@@ -16,9 +20,28 @@ func _physics_process(delta):
 	
 	get_crafting_input()
 	
+	if Input.is_action_just_pressed("interact"):
+		interact()
+	
+	change_interaction_cast_direction(direction)
+	
 	update_animation()
 	
 	velocity = move_and_slide(velocity)
+
+func change_interaction_cast_direction(direction: Vector2):
+	match direction:
+		Vector2(-1,0):
+			$interaction_cast.cast_to = Vector2(-interaction_cast_length,0)
+		Vector2(1, 0):
+			$interaction_cast.cast_to = Vector2(interaction_cast_length,0)
+		Vector2(0,-1):
+			$interaction_cast.cast_to = Vector2(0,-interaction_cast_length)
+		Vector2(0, 1):
+			$interaction_cast.cast_to = Vector2(0,interaction_cast_length)
+		_:
+			return
+	pass
 
 func get_movement_input():
 	velocity = Vector2.ZERO
@@ -34,7 +57,7 @@ func get_movement_input():
 	velocity = velocity.normalized() * speed
 
 func get_crafting_input():
-	if Input.is_action_just_pressed("inventory_open"):
+	if Input.is_action_just_pressed("inventory_open") and not interacting:
 		$crafting_hud/crafting_area.visible = not $crafting_hud/crafting_area.visible
 	pass
 
@@ -53,4 +76,10 @@ func update_animation():
 			return
 	pass
 
+func interact():
+	if $interaction_cast.is_colliding():
+		if $interaction_cast.get_collider().is_in_group("terminal"):
+			$crafting_hud/crafting_area.visible = not $crafting_hud/crafting_area.visible
+			$interaction_cast.get_collider().toggle_visibility()
+			interacting = not interacting
 

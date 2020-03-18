@@ -9,10 +9,25 @@ onready var container = get_node(container_path)
 var grid := {}
 
 const recipes = {
-	"ABC": "Thing 1",
+	"AB": "Thing 1",
 	"AB--C": "Thing 2",
 	"A--B-": "Thing 3",
 }
+
+# recipes from largest to smallest.
+var sorted_recipes = recipes.keys()
+
+class StringSorter:
+	static func sort_by_length(str1: String,  str2: String):
+		if str1.length() > str2.length():
+			return str1
+		else:
+			return str2
+
+func _ready():
+	sorted_recipes.sort_custom(StringSorter, "sort_by_length")
+	print(sorted_recipes)
+	pass
 
 func move_window_to_top(node):
 	container.move_child(node, container.get_child_count() - 1)
@@ -53,7 +68,8 @@ func clear_grid():
 func _on_work_grid_grid_updated(_grid):
 	grid = _grid
 	var grid_as_string := grid_to_string(grid)
-	for recipe in recipes:
+	print(grid_as_string)
+	for recipe in sorted_recipes:
 		if recipe in grid_as_string:
 			emit_signal("item_crafted", recipes[recipe])
 			break # so it doesn't fall through to "Nothing"

@@ -37,6 +37,7 @@ __meta__ = {
 }
 
 [node name="crafting_table" parent="crafting_hud/crafting_area" instance=ExtResource( 3 )]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -127.181
@@ -47,13 +48,13 @@ container_path = NodePath("../material_supply")
 
 [node name="craft_button" type="Button" parent="crafting_hud/crafting_area"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -157.522
-margin_top = 69.8268
-margin_right = -100.522
-margin_bottom = 89.8268
+anchor_bottom = 1.0
+margin_left = -155.681
+margin_top = -34.2825
+margin_right = -98.681
+margin_bottom = -14.2825
 text = "Craft!"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,9 +67,9 @@ anchor_left = 0.339
 anchor_top = 0.824
 anchor_right = 0.663
 anchor_bottom = 0.946
-margin_left = 1.82401
+margin_left = -2.77188
 margin_top = 0.0160065
-margin_right = -1.592
+margin_right = -6.18788
 margin_bottom = 0.664001
 script = ExtResource( 9 )
 __meta__ = {
@@ -81,15 +82,18 @@ anchor_bottom = 1.0
 text = "Disposal"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="crafted_material_display" type="Panel" parent="crafting_hud/crafting_area"]
 anchor_left = 0.342
 anchor_top = 0.331
 anchor_right = 0.659
 anchor_bottom = 0.792
-margin_left = 0.671997
+margin_left = -3.92389
 margin_top = 2.50399
-margin_right = -0.056015
+margin_right = -4.6519
 margin_bottom = -0.0720062
 script = ExtResource( 10 )
 __meta__ = {
@@ -99,14 +103,15 @@ disposal_path = NodePath("../disposal")
 material_supply_path = NodePath("../material_supply")
 
 [node name="Label" type="Label" parent="crafting_hud/crafting_area/crafted_material_display"]
-anchor_left = 0.335
-anchor_top = 0.813
-anchor_right = 0.665
-anchor_bottom = 0.957
-margin_left = -0.0349998
-margin_top = -0.0181503
-margin_right = 0.034996
-margin_bottom = 0.0138474
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -22.1142
+margin_top = -22.4567
+margin_right = 17.8858
+margin_bottom = -8.45667
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -157,6 +162,10 @@ texture = ExtResource( 5 )
 script = ExtResource( 8 )
 crafting_table = NodePath("../../../crafting_table")
 disposal_path = NodePath("../../../disposal")
+
+[node name="interaction_cast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 25 )
 [connection signal="item_crafted" from="crafting_hud/crafting_area/crafting_table" to="crafting_hud" method="_on_crafting_table_item_crafted"]
 [connection signal="pressed" from="crafting_hud/crafting_area/craft_button" to="crafting_hud" method="_on_craft_button_pressed"]
 [connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display" to="crafting_hud/crafting_area/material_supply/material_container/material_display" method="_on_material_display_gui_input"]
