@@ -1,5 +1,10 @@
 extends Panel
 
+export (NodePath) var disposal_path: NodePath
+export (NodePath) var material_supply_path: NodePath
+onready var disposal_node = get_node(disposal_path)
+onready var supply_node   = get_node(material_supply_path)
+
 var material_scene := preload("res://materials/material.tscn")
 
 var crafted_material_textures := {
@@ -11,6 +16,7 @@ func spawn_crafted_material(material_to_craft: String) -> void:
 	var crafted_material: TextureRect = material_scene.instance()
 	crafted_material.texture = crafted_material_textures[material_to_craft]
 	crafted_material.rect_scale = Vector2(1,1)
+	crafted_material.connect("dropped", disposal_node, "remove_material")
 	
 	# centers the material.
 	# magic numbers derived from centering the $Label child
@@ -18,5 +24,9 @@ func spawn_crafted_material(material_to_craft: String) -> void:
 	crafted_material.margin_top  = 10
 	crafted_material.margin_right = -30
 	crafted_material.margin_bottom = 10
-	add_child(crafted_material)
+	
+	crafted_material.rect_position.x = rect_position.x + (rect_size.x / 3)
+	crafted_material.rect_position.y = rect_position.y
+	
+	supply_node.add_child(crafted_material)
 	pass

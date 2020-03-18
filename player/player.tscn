@@ -29,6 +29,7 @@ shape = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="crafting_area" type="Control" parent="crafting_hud"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -58,42 +59,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="crafted_material_display" type="Panel" parent="crafting_hud/crafting_area"]
-anchor_left = 0.342
-anchor_top = 0.331
-anchor_right = 0.659
-anchor_bottom = 0.792
-margin_left = 0.671997
-margin_top = 2.50399
-margin_right = -0.056015
-margin_bottom = -0.0720062
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="crafting_hud/crafting_area/crafted_material_display"]
-anchor_left = 0.335
-anchor_top = 0.813
-anchor_right = 0.665
-anchor_bottom = 0.957
-margin_left = -0.0349998
-margin_top = -0.0181503
-margin_right = 0.034996
-margin_bottom = 0.0138474
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="disposal" type="Panel" parent="crafting_hud/crafting_area" groups=[
 "disposal",
 ]]
-anchor_left = 0.337
-anchor_top = 0.761
+anchor_left = 0.339
+anchor_top = 0.824
 anchor_right = 0.663
 anchor_bottom = 0.946
-margin_left = 0.591995
-margin_top = 13.624
+margin_left = -0.17601
+margin_top = 0.0159912
 margin_right = 0.40799
 margin_bottom = 0.663986
 script = ExtResource( 9 )
@@ -107,6 +81,35 @@ anchor_bottom = 1.0
 text = "Disposal"
 align = 1
 valign = 1
+
+[node name="crafted_material_display" type="Panel" parent="crafting_hud/crafting_area"]
+anchor_left = 0.342
+anchor_top = 0.331
+anchor_right = 0.659
+anchor_bottom = 0.792
+margin_left = 0.671997
+margin_top = 2.50399
+margin_right = -0.056015
+margin_bottom = -0.0720062
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+disposal_path = NodePath("../disposal")
+material_supply_path = NodePath("../material_supply")
+
+[node name="Label" type="Label" parent="crafting_hud/crafting_area/crafted_material_display"]
+anchor_left = 0.335
+anchor_top = 0.813
+anchor_right = 0.665
+anchor_bottom = 0.957
+margin_left = -0.0349998
+margin_top = -0.0181503
+margin_right = 0.034996
+margin_bottom = 0.0138474
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="material_supply" type="Control" parent="crafting_hud/crafting_area"]
 __meta__ = {

@@ -8,7 +8,10 @@ func _ready():
 	Game.player = self
 
 func _physics_process(delta):
-	get_movement_input()
+	if not $crafting_hud/crafting_area.visible:
+		get_movement_input()
+	else:
+		velocity = Vector2.ZERO
 	direction = Vector2(sign(velocity.x), sign(velocity.y))
 	
 	get_crafting_input()
@@ -49,4 +52,5 @@ func update_animation():
 		_:
 			return
 	pass
+
 
