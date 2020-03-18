@@ -7,6 +7,7 @@ func _on_craft_button_pressed():
 	if item_crafted != "Nothing":
 		$crafting_area/crafting_table.clear_grid()
 		$crafting_area/crafted_material_display.spawn_crafted_material(item_crafted)
+		item_crafted = "Nothing"
 	pass # Replace with function body.
 
 
