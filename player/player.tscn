@@ -66,10 +66,10 @@ anchor_left = 0.339
 anchor_top = 0.824
 anchor_right = 0.663
 anchor_bottom = 0.946
-margin_left = -0.17601
-margin_top = 0.0159912
-margin_right = 0.40799
-margin_bottom = 0.663986
+margin_left = 1.82401
+margin_top = 0.0160065
+margin_right = -1.592
+margin_bottom = 0.664001
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -117,9 +117,9 @@ __meta__ = {
 }
 
 [node name="material_container" type="HBoxContainer" parent="crafting_hud/crafting_area/material_supply"]
-margin_left = 22.7564
+margin_left = 21.3787
 margin_top = 38.7299
-margin_right = 108.756
+margin_right = 107.379
 margin_bottom = 54.7299
 custom_constants/separation = 19
 __meta__ = {
