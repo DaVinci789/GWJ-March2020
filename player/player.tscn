@@ -166,6 +166,9 @@ disposal_path = NodePath("../../../disposal")
 [node name="interaction_cast" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 25 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 [connection signal="item_crafted" from="crafting_hud/crafting_area/crafting_table" to="crafting_hud" method="_on_crafting_table_item_crafted"]
 [connection signal="pressed" from="crafting_hud/crafting_area/craft_button" to="crafting_hud" method="_on_craft_button_pressed"]
 [connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display" to="crafting_hud/crafting_area/material_supply/material_container/material_display" method="_on_material_display_gui_input"]

@@ -82,4 +82,7 @@ func interact():
 			$crafting_hud/crafting_area.visible = not $crafting_hud/crafting_area.visible
 			$interaction_cast.get_collider().toggle_visibility()
 			interacting = not interacting
-
+			if interacting:
+				$Camera2D.position.y += 60
+			else:
+				$Camera2D.position.y -= 60
