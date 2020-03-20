@@ -30,3 +30,6 @@ func _process(delta):
 		spawned_in = false
 		drag_position = null
 		emit_signal("dropped", self)
+
+func _exit_tree():
+	Game.player.materials_left[get_groups()[0]] += 1

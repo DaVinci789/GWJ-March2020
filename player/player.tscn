@@ -29,7 +29,6 @@ shape = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="crafting_area" type="Control" parent="crafting_hud"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -101,16 +100,17 @@ __meta__ = {
 }
 disposal_path = NodePath("../disposal")
 material_supply_path = NodePath("../material_supply")
+crafting_path = NodePath("../crafting_table")
 
 [node name="Label" type="Label" parent="crafting_hud/crafting_area/crafted_material_display"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -22.1142
-margin_top = -22.4567
-margin_right = 17.8858
-margin_bottom = -8.45667
+anchor_left = 0.317
+anchor_top = 0.768
+anchor_right = 0.648
+anchor_bottom = 0.913
+margin_left = 0.0288391
+margin_top = 0.0473328
+margin_right = -0.022171
+margin_bottom = -0.0176697
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -122,46 +122,82 @@ __meta__ = {
 }
 
 [node name="material_container" type="HBoxContainer" parent="crafting_hud/crafting_area/material_supply"]
-margin_left = 21.3787
-margin_top = 38.7299
-margin_right = 107.379
-margin_bottom = 54.7299
+margin_left = 21.1777
+margin_top = 40.8271
+margin_right = 107.178
+margin_bottom = 56.8271
 custom_constants/separation = 19
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="material_display" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container" groups=[
+[node name="display1" type="VBoxContainer" parent="crafting_hud/crafting_area/material_supply/material_container"]
+margin_right = 16.0
+margin_bottom = 34.0
+
+[node name="material" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container/display1" groups=[
 "material",
 ]]
 margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 6 )
 script = ExtResource( 8 )
-crafting_table = NodePath("../../../crafting_table")
-disposal_path = NodePath("../../../disposal")
+crafting_table = NodePath("../../../../crafting_table")
+disposal_path = NodePath("../../../../disposal")
+material_supply_path = NodePath("../../..")
 
-[node name="material_display1" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container" groups=[
-"material1",
-]]
+[node name="material_count" type="Label" parent="crafting_hud/crafting_area/material_supply/material_container/display1"]
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 34.0
+text = "3"
+align = 1
+
+[node name="display2" type="VBoxContainer" parent="crafting_hud/crafting_area/material_supply/material_container"]
 margin_left = 35.0
 margin_right = 51.0
+margin_bottom = 34.0
+
+[node name="material1" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container/display2" groups=[
+"material1",
+]]
+margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 7 )
 script = ExtResource( 8 )
-crafting_table = NodePath("../../../crafting_table")
-disposal_path = NodePath("../../../disposal")
+crafting_table = NodePath("../../../../crafting_table")
+disposal_path = NodePath("../../../../disposal")
+material_supply_path = NodePath("../../..")
 
-[node name="material_display2" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container" groups=[
-"material2",
-]]
+[node name="material_count" type="Label" parent="crafting_hud/crafting_area/material_supply/material_container/display2"]
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 34.0
+text = "3"
+align = 1
+
+[node name="display3" type="VBoxContainer" parent="crafting_hud/crafting_area/material_supply/material_container"]
 margin_left = 70.0
 margin_right = 86.0
+margin_bottom = 34.0
+
+[node name="material2" type="TextureRect" parent="crafting_hud/crafting_area/material_supply/material_container/display3" groups=[
+"material2",
+]]
+margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 5 )
 script = ExtResource( 8 )
-crafting_table = NodePath("../../../crafting_table")
-disposal_path = NodePath("../../../disposal")
+crafting_table = NodePath("../../../../crafting_table")
+disposal_path = NodePath("../../../../disposal")
+material_supply_path = NodePath("../../..")
+
+[node name="material_count" type="Label" parent="crafting_hud/crafting_area/material_supply/material_container/display3"]
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 34.0
+text = "3"
+align = 1
 
 [node name="interaction_cast" type="RayCast2D" parent="."]
 enabled = true
@@ -171,6 +207,6 @@ cast_to = Vector2( 0, 25 )
 current = true
 [connection signal="item_crafted" from="crafting_hud/crafting_area/crafting_table" to="crafting_hud" method="_on_crafting_table_item_crafted"]
 [connection signal="pressed" from="crafting_hud/crafting_area/craft_button" to="crafting_hud" method="_on_craft_button_pressed"]
-[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display" to="crafting_hud/crafting_area/material_supply/material_container/material_display" method="_on_material_display_gui_input"]
-[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display1" to="crafting_hud/crafting_area/material_supply/material_container/material_display1" method="_on_material_display_gui_input"]
-[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/material_display2" to="crafting_hud/crafting_area/material_supply/material_container/material_display2" method="_on_material_display_gui_input"]
+[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/display1/material" to="crafting_hud/crafting_area/material_supply/material_container/display1/material" method="_on_material_display_gui_input"]
+[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/display2/material1" to="crafting_hud/crafting_area/material_supply/material_container/display2/material1" method="_on_material_display_gui_input"]
+[connection signal="gui_input" from="crafting_hud/crafting_area/material_supply/material_container/display3/material2" to="crafting_hud/crafting_area/material_supply/material_container/display3/material2" method="_on_material_display_gui_input"]

@@ -26,12 +26,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -48.0
-margin_top = -99.5
+margin_top = -48.0
 margin_right = 48.0
-margin_bottom = 99.5
+margin_bottom = 48.0
 custom_constants/separation = 7
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "This can prob. have more than one grid idk yet."
 }
 
 [node name="terminal_grid" type="TextureRect" parent="terminal_interface/grid_container"]
@@ -39,8 +40,13 @@ margin_right = 96.0
 margin_bottom = 96.0
 texture = ExtResource( 2 )
 
-[node name="terminal_grid2" type="TextureRect" parent="terminal_interface/grid_container"]
-margin_top = 103.0
-margin_right = 96.0
-margin_bottom = 199.0
+[node name="grid_fade" type="TextureRect" parent="terminal_interface/grid_container/terminal_grid"]
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -56.0
+margin_bottom = -56.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

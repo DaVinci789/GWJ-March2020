@@ -2,6 +2,12 @@ extends KinematicBody2D
 
 onready var interaction_cast_length = $interaction_cast.cast_to.y
 
+var materials_left = {
+	"material": 3,
+	"material1": 3,
+	"material2": 3,
+}
+
 var speed = 200  # speed in pixels/sec
 var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
@@ -11,7 +17,7 @@ var interacting := false
 func _ready():
 	Game.player = self
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not $crafting_hud/crafting_area.visible:
 		get_movement_input()
 	else:
@@ -29,8 +35,8 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 
-func change_interaction_cast_direction(direction: Vector2):
-	match direction:
+func change_interaction_cast_direction(direction_to_face: Vector2):
+	match direction_to_face:
 		Vector2(-1,0):
 			$interaction_cast.cast_to = Vector2(-interaction_cast_length,0)
 		Vector2(1, 0):
@@ -86,3 +92,6 @@ func interact():
 				$Camera2D.position.y += 60
 			else:
 				$Camera2D.position.y -= 60
+
+func use_material(material_type: String):
+	materials_left[material_type] -= 1
