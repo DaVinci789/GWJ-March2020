@@ -16,4 +16,5 @@ func _on_Button_pressed():
 	pass # Replace with function body.
 
 func _on_terminal_ui_consume(materials):
+	return
 	$terminal_interface/Label.text = str(materials)

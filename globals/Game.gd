@@ -15,3 +15,7 @@ const recipes = {
 	"AB": "Thing 1",
 	"AB--C": "Thing 2",
 }
+
+const crafted_recipes = {
+	"bb-bb-aa": "Cooked 1",
+}

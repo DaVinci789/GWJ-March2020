@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+onready var crafted_recipes = Game.crafted_recipes
 onready var crafting_grid = $terminal_ui/terminal_interface/grid_container/crafting_window
 
 func toggle_visibility():
@@ -28,3 +29,12 @@ func remove_material_from_grid(node):
 func snap_material_to_grid(node):
 	crafting_grid.snap_material_to_grid(node)
 	pass
+
+func _on_terminal_ui_consume(materials: String):
+	print(materials)
+	for recipe in crafted_recipes.keys():
+		print(recipe)
+		print("Derp")
+		if recipe in materials:
+			print("hello")
+			$terminal_ui/terminal_interface/Label.text = crafted_recipes[recipe]
