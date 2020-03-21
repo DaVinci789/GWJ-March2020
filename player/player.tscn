@@ -29,8 +29,10 @@ shape = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="crafting_area" type="Control" parent="crafting_hud"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -136.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,9 +41,9 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -127.181
+margin_left = -59.9629
 margin_top = -26.4389
-margin_right = -127.181
+margin_right = -59.9629
 margin_bottom = -26.4389
 container_path = NodePath("../material_supply")
 
@@ -50,9 +52,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -155.681
+margin_left = -87.9461
 margin_top = -34.2825
-margin_right = -98.681
+margin_right = -30.9461
 margin_bottom = -14.2825
 text = "Craft!"
 __meta__ = {
@@ -62,14 +64,14 @@ __meta__ = {
 [node name="disposal" type="Panel" parent="crafting_hud/crafting_area" groups=[
 "disposal",
 ]]
-anchor_left = 0.339
+anchor_left = 0.593
 anchor_top = 0.824
-anchor_right = 0.663
-anchor_bottom = 0.946
-margin_left = -2.77188
-margin_top = 0.0160065
-margin_right = -6.18788
-margin_bottom = 0.664001
+anchor_right = 0.903
+anchor_bottom = 0.949
+margin_left = 0.0390472
+margin_top = 0.0159912
+margin_right = 0.095047
+margin_bottom = 0.0159912
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -86,13 +88,13 @@ __meta__ = {
 }
 
 [node name="crafted_material_display" type="Panel" parent="crafting_hud/crafting_area"]
-anchor_left = 0.342
-anchor_top = 0.331
-anchor_right = 0.659
+anchor_left = 0.557
+anchor_top = 0.343
+anchor_right = 0.948
 anchor_bottom = 0.792
-margin_left = -3.92389
-margin_top = 2.50399
-margin_right = -4.6519
+margin_left = 0.0683594
+margin_top = -0.0880127
+margin_right = 0.100357
 margin_bottom = -0.0720062
 script = ExtResource( 10 )
 __meta__ = {
@@ -101,16 +103,17 @@ __meta__ = {
 disposal_path = NodePath("../disposal")
 material_supply_path = NodePath("../material_supply")
 crafting_path = NodePath("../crafting_table")
+material_container_path = NodePath("../material_supply/material_container")
 
 [node name="Label" type="Label" parent="crafting_hud/crafting_area/crafted_material_display"]
-anchor_left = 0.317
-anchor_top = 0.768
-anchor_right = 0.648
-anchor_bottom = 0.913
-margin_left = 0.0288391
-margin_top = 0.0473328
-margin_right = -0.022171
-margin_bottom = -0.0176697
+anchor_left = 0.01
+anchor_top = 0.814
+anchor_right = 0.99
+anchor_bottom = 1.0
+margin_left = 0.0299999
+margin_top = 0.0419922
+margin_right = -0.0300064
+margin_bottom = -7.62939e-06
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -204,6 +207,7 @@ enabled = true
 cast_to = Vector2( 0, 25 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 current = true
 [connection signal="item_crafted" from="crafting_hud/crafting_area/crafting_table" to="crafting_hud" method="_on_crafting_table_item_crafted"]
 [connection signal="pressed" from="crafting_hud/crafting_area/craft_button" to="crafting_hud" method="_on_craft_button_pressed"]

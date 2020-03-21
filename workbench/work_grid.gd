@@ -6,6 +6,8 @@ const material_names_raw = {
 	"material": "A",
 	"material1": "B",
 	"material2": "C",
+	"Thing 1": "a",
+	"Thing 2": "b",
 }
 
 var items = []

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var interaction_cast_length = $interaction_cast.cast_to.y
+onready var material_supply_node = get_node("crafting_hud/crafting_area/material_supply")
 
 var materials_left = {
 	"material": 3,
@@ -65,6 +66,10 @@ func get_movement_input():
 func get_crafting_input():
 	if Input.is_action_just_pressed("inventory_open") and not interacting:
 		$crafting_hud/crafting_area.visible = not $crafting_hud/crafting_area.visible
+	if not $crafting_hud/crafting_area.visible:
+		for node in material_supply_node.get_children():
+			if node.name != "material_container":
+				node.dispose()
 	pass
 
 # only updates facing rn
@@ -86,6 +91,7 @@ func interact():
 	if $interaction_cast.is_colliding():
 		if $interaction_cast.get_collider().is_in_group("terminal"):
 			$crafting_hud/crafting_area.visible = not $crafting_hud/crafting_area.visible
+			$interaction_cast.get_collider().load_container(material_supply_node)
 			$interaction_cast.get_collider().toggle_visibility()
 			interacting = not interacting
 			if interacting:
@@ -93,5 +99,8 @@ func interact():
 			else:
 				$Camera2D.position.y -= 60
 
-func use_material(material_type: String):
-	materials_left[material_type] -= 1
+func use_material(material_type: String, amount: int):
+	materials_left[material_type] -= amount
+
+func add_material(material_type: String, amount: int):
+	materials_left[material_type] += amount

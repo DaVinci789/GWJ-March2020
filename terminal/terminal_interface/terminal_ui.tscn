@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://terminal/terminal_interface/terminal_ui.gd" type="Script" id=1]
-[ext_resource path="res://assets/grid/grid.png" type="Texture" id=2]
+[ext_resource path="res://workbench/crafting_window.tscn" type="PackedScene" id=2]
 
 [node name="terminal_ui" type="CanvasLayer"]
+pause_mode = 2
 layer = 0
 script = ExtResource( 1 )
 
@@ -26,27 +27,36 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -48.0
-margin_top = -48.0
+margin_top = -48.5
 margin_right = 48.0
-margin_bottom = 48.0
+margin_bottom = 48.5
 custom_constants/separation = 7
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "This can prob. have more than one grid idk yet."
 }
 
-[node name="terminal_grid" type="TextureRect" parent="terminal_interface/grid_container"]
+[node name="crafting_window" parent="terminal_interface/grid_container" instance=ExtResource( 2 )]
 margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 2 )
+margin_bottom = 0.0
 
-[node name="grid_fade" type="TextureRect" parent="terminal_interface/grid_container/terminal_grid"]
-modulate = Color( 1, 1, 1, 0.498039 )
-anchor_right = 1.0
+[node name="Button" type="Button" parent="terminal_interface"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_right = -56.0
-margin_bottom = -56.0
-texture = ExtResource( 2 )
+margin_left = -23.5
+margin_top = -48.3136
+margin_right = 23.5
+margin_bottom = -28.3136
+text = "FEED!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="terminal_interface"]
+margin_left = 36.6124
+margin_top = 20.9911
+margin_right = 76.6124
+margin_bottom = 34.9911
+[connection signal="pressed" from="terminal_interface/Button" to="." method="_on_Button_pressed"]

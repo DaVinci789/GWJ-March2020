@@ -19,3 +19,4 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="terminal_ui" parent="." instance=ExtResource( 3 )]
+[connection signal="consume" from="terminal_ui" to="." method="_on_terminal_ui_consume"]
