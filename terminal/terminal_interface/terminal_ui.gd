@@ -12,6 +12,8 @@ func new_grid_pattern():
 	pass
 
 func _on_Button_pressed():
-	print()
 	emit_signal("consume", $terminal_interface/grid_container/crafting_window.grid_to_string($terminal_interface/grid_container/crafting_window.grid))
 	pass # Replace with function body.
+
+func _on_terminal_ui_consume(materials):
+	$terminal_interface/Label.text = str(materials)

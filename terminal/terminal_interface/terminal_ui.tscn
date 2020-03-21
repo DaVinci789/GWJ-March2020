@@ -59,4 +59,5 @@ margin_left = 36.6124
 margin_top = 20.9911
 margin_right = 76.6124
 margin_bottom = 34.9911
+[connection signal="consume" from="." to="." method="_on_terminal_ui_consume"]
 [connection signal="pressed" from="terminal_interface/Button" to="." method="_on_Button_pressed"]

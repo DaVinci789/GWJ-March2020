@@ -2,13 +2,7 @@ extends TextureRect
 
 signal grid_updated(grid)
 
-const material_names_raw = {
-	"material": "A",
-	"material1": "B",
-	"material2": "C",
-	"Thing 1": "a",
-	"Thing 2": "b",
-}
+var material_names_raw = Game.material_names_raw
 
 var items = []
 var grid = {}

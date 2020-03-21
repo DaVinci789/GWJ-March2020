@@ -8,10 +8,7 @@ onready var work_grid = $work_grid
 onready var container = get_node(container_path)
 var grid := {}
 
-const recipes = {
-	"AB": "Thing 1",
-	"AB--C": "Thing 2",
-}
+var recipes = Game.recipes
 
 # recipes from largest to smallest.
 var sorted_recipes = recipes.keys()
