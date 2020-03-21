@@ -31,10 +31,6 @@ func snap_material_to_grid(node):
 	pass
 
 func _on_terminal_ui_consume(materials: String):
-	print(materials)
 	for recipe in crafted_recipes.keys():
-		print(recipe)
-		print("Derp")
 		if recipe in materials:
-			print("hello")
 			$terminal_ui/terminal_interface/Label.text = crafted_recipes[recipe]
