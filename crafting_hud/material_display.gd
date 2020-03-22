@@ -14,6 +14,9 @@ onready var material_count = get_parent().get_node("material_count")
 
 onready var material_template = load("res://materials/material.tscn")
 
+func _ready():
+	owner.connect("player_update_items", self, "update_label_amount")
+
 # maybe refactor this to be a part of material container?
 func _on_material_display_gui_input(event):
 	if event is InputEventMouseButton:
@@ -63,3 +66,8 @@ func increment_label(material_instance):
 	else:
 		Game.player.add_material(material_instance.get_material_type(), 1)
 		material_count.text = str(Game.player.materials_left[material_instance.get_material_type()])
+
+func update_label_amount(material_type: String, amount: int):
+	if not name == material_type:
+		return
+	material_count.text = str(int(material_count.text) + amount)

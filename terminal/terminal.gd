@@ -9,7 +9,7 @@ onready var crafting_grid = $terminal_ui/terminal_interface/grid_container/craft
 
 func _ready():
 	correct_pattern = new_grid_pattern()
-	$terminal_ui/terminal_interface/Label.text = correct_pattern
+	$terminal_ui/terminal_interface/Label.text = crafted_recipes[correct_pattern]
 	print(correct_pattern)
 
 func new_grid_pattern() -> String:
@@ -42,7 +42,6 @@ func snap_material_to_grid(node):
 	pass
 
 func _on_terminal_ui_consume(materials: String):
-	print(materials)
 	if correct_pattern in materials:
 		$terminal_ui/terminal_interface/Label.text = "Correct!"
 		$terminal_ui.clear_grid()

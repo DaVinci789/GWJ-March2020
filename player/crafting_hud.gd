@@ -2,6 +2,9 @@ extends CanvasLayer
 
 var item_crafted := "Nothing"
 
+func free_grid():
+	$crafting_area/crafting_table.clear_grid()
+
 func _on_craft_button_pressed():
 	$crafting_area/crafted_material_display/Label.text = item_crafted
 	print($crafting_area/crafting_table.grid_to_string($crafting_area/crafting_table.grid))
