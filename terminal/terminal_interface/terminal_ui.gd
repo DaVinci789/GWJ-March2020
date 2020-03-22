@@ -8,13 +8,12 @@ func toggle_visibility():
 func load_container(container):
 	$terminal_interface/grid_container/crafting_window.container = container
 
-func new_grid_pattern():
-	pass
+func clear_grid():
+	$terminal_interface/grid_container/crafting_window.clear_grid()
 
 func _on_Button_pressed():
 	emit_signal("consume", $terminal_interface/grid_container/crafting_window.grid_to_string($terminal_interface/grid_container/crafting_window.grid))
 	pass # Replace with function body.
 
-func _on_terminal_ui_consume(materials):
+func _on_terminal_ui_consume(_materials):
 	return
-	$terminal_interface/Label.text = str(materials)

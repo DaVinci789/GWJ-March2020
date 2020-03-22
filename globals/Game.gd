@@ -3,6 +3,8 @@ extends Node
 var player: Node = null
 var current_terminal: Node = null
 
+# Crafted materials will display the appropriate lowercase letter for each
+# grid spot they occupy
 const material_names_raw = {
 	"material": "A",
 	"material1": "B",
