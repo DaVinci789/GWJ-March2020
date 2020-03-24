@@ -11,11 +11,6 @@ onready var material_container_node = get_node(material_container_path)
 
 var material_scene := preload("res://materials/material.tscn")
 
-# var crafted_material_textures := {
-# 	"Thing 1": preload("res://assets/materials/2vert_block.png"),
-# 	"Thing 2": preload("res://assets/materials/l_block.png"),
-# }
-
 var crafted_material_textures := Game.material_images
 
 func spawn_crafted_material(material_to_craft: String, materials_used: Array) -> void:

@@ -4,10 +4,11 @@ Project Description
 
 ### Todo
 
-- [ ] Add recipes?  
+- [ ] Implement rooms  
 
 ### In Progress
 
+- [ ] Add recipes?  
 
 ### Done ✓
 
