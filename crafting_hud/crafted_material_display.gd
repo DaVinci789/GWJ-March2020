@@ -11,10 +11,7 @@ onready var material_container_node = get_node(material_container_path)
 
 var material_scene := preload("res://materials/material.tscn")
 
-var crafted_material_textures := {
-	"Thing 1": preload("res://assets/materials/2vert_block.png"),
-	"Thing 2": preload("res://assets/materials/l_block.png"),
-}
+var crafted_material_textures := Game.material_images
 
 func spawn_crafted_material(material_to_craft: String, materials_used: Array) -> void:
 	var crafted_material: TextureRect = material_scene.instance()
@@ -36,11 +33,10 @@ func spawn_crafted_material(material_to_craft: String, materials_used: Array) ->
 		crafted_material.connect("dropped", Game.current_terminal, "snap_material_to_grid")
 	
 	# centers the material.
-	# magic numbers derived from centering the $Label child
-	crafted_material.margin_left = 30
-	crafted_material.margin_top  = 10
-	crafted_material.margin_right = -30
-	crafted_material.margin_bottom = 10
+	crafted_material.anchor_bottom = 0.5 
+	crafted_material.anchor_top = 0.5 
+	crafted_material.anchor_left = 0.5 
+	crafted_material.anchor_right = 0.5 
 	
 	crafted_material.rect_position.x = rect_position.x + (rect_size.x / 3)
 	crafted_material.rect_position.y = rect_position.y

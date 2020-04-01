@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends StaticBody2D
+
+var material_images: Dictionary = Game.material_images
+
+export (String, \"material\", \"material1\", \"material2\") var material_supply_type := \"material\"
+
+func _ready():
+	$Sprite.texture = material_images[material_supply_type]
+	pass
+
+func set_material_type(material: String) -> void:
+	material_supply_type = material
+"
+__meta__ = {
+"Scene_Path": "res://supply_station/supply_station.tscn"
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="supply_station" type="StaticBody2D" groups=[
+"supply",
+]]
+script = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="supply_station_interact" type="Area2D" parent="."]
+
+[node name="supply_station_interact_collision" type="CollisionShape2D" parent="supply_station_interact"]
+shape = SubResource( 2 )

@@ -16,7 +16,7 @@ var composed_of := []
 var crafted := false
 
 # Godot doesn't react to input events if it didn't start *on* material
-func _process(delta):
+func _process(_delta):
 	if spawned_in:
 		rect_global_position = get_global_mouse_position() - Vector2(16,16)
 	if spawned_in and Input.is_action_just_released("drag"):
