@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://rooms/room.tres" type="TileSet" id=1]
-[ext_resource path="res://rooms/room_base.gd" type="Script" id=2]
+[ext_resource path="res://rooms/order_room/order_room.gd" type="Script" id=2]
 
 [node name="order_room" type="TileMap"]
 tile_set = ExtResource( 1 )

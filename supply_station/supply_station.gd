@@ -8,6 +8,5 @@ func _ready():
 	$Sprite.texture = material_images[material_supply_type]
 	pass
 
-func _process(delta):
-	$Sprite.texture = material_images[material_supply_type]
-	pass
+func set_material_type(material: String) -> void:
+	material_supply_type = material

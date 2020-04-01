@@ -8,7 +8,7 @@ enum Directions {
 }
 
 # this is in addition to the starting room
-const ROOM_AMOUNT = 4
+const ROOM_AMOUNT = 2
 const TILE_SIZE   = 16
 
 const order_room_scene = preload("res://rooms/order_room/order_room.tscn")
@@ -25,14 +25,18 @@ var rooms := []
 func _ready():
 	generate_rooms()
 
+	var starting_room_map: TileMap = rooms[0].tilemap
+	starting_room_map.load_order_stations(starting_room_map.exits[0])
+
 	# move player node on top
 	move_child($player, self.get_children().size())
-	var starting_room_map: TileMap = rooms[0].tilemap
 	$player.position = Vector2(starting_room_map.room_width / 2, starting_room_map.room_height / 2) * TILE_SIZE
 
 func _process(_delta):
 	if Input.is_action_just_pressed("reset"):
 		generate_rooms()
+		var order_room_map: TileMap = rooms[0].tilemap
+		order_room_map.load_order_stations(order_room_map.exits[0])
 		move_child($player, self.get_children().size())
 
 func generate_rooms():
