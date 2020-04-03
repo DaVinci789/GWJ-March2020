@@ -7,11 +7,14 @@ func _ready():
 	load_terminals()
 
 func load_terminals():
+	randomize()
 	for location in get_used_cells_by_id(terminal_tile):
+		set_cellv(location, 0)
+		update_bitmask_region(Vector2(0,0), map_to_world(Vector2(room_width, room_height)))
+		if randi() % 3 == 1:
+			continue
 		var terminal = terminal_scene.instance()
 		add_child(terminal)
 		terminal.position = map_to_world(location)
 		terminal.position += terminal.tex_size / 3
-		set_cellv(location, 0)
-		update_bitmask_region(Vector2(0,0), map_to_world(Vector2(room_width, room_height)))
 	pass

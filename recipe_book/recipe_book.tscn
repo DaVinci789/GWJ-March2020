@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://recipe_book/recipe_book.gd" type="Script" id=1]
+[ext_resource path="res://recipe_book/corner.png" type="Texture" id=2]
+
+[node name="recipe_book" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.562164
+margin_top = -0.562172
+margin_right = -0.562164
+margin_bottom = -0.562164
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="binding" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -174.5
+margin_top = -95.0
+margin_right = 174.5
+margin_bottom = 95.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="page_container" type="HBoxContainer" parent="binding"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -164.5
+margin_top = -90.0
+margin_right = 164.5
+margin_bottom = 90.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lpage" type="ColorRect" parent="binding/page_container"]
+margin_right = 159.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+color = Color( 0.921569, 0.847059, 0.717647, 1 )
+
+[node name="page_contents" type="VBoxContainer" parent="binding/page_container/lpage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="recipe_name" type="Label" parent="binding/page_container/lpage/page_contents"]
+margin_right = 149.0
+margin_bottom = 14.0
+
+[node name="instructions" type="Label" parent="binding/page_container/lpage/page_contents"]
+margin_top = 18.0
+margin_right = 149.0
+margin_bottom = 32.0
+
+[node name="corner" type="TextureRect" parent="binding/page_container/lpage"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -16.0
+margin_right = 16.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rpage" type="ColorRect" parent="binding/page_container"]
+margin_left = 169.0
+margin_right = 329.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+color = Color( 0.921569, 0.847059, 0.717647, 1 )
+
+[node name="page_contents" type="VBoxContainer" parent="binding/page_container/rpage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="final_product" type="TextureRect" parent="binding/page_container/rpage/page_contents"]
+margin_right = 150.0
+
+[node name="flavor_text" type="Label" parent="binding/page_container/rpage/page_contents"]
+margin_top = 4.0
+margin_right = 150.0
+margin_bottom = 18.0
+
+[node name="corner" type="TextureRect" parent="binding/page_container/rpage"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -16.0
+texture = ExtResource( 2 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
